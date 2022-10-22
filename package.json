@@ -1,0 +1,23 @@
+{
+  "name": "telegrambot",
+  "version": "1.0.0",
+  "description": "UBIX Network Bot",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": "18.x",
+    "npm": "8.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "author": "DNO Team",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.8",
+    "node-telegram-bot-api": "^0.59.0",
+    "nodemon": "^2.0.20"
+  }
+}
