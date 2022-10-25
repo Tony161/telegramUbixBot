@@ -1,14 +1,12 @@
 import TelegramBot  from 'node-telegram-bot-api';
 import * as dotenv from 'dotenv'
-
+dotenv.config();
 import request from 'request';
 import express from 'express';
 
 const app = express();
 console.log(process.env.BOT_API_KEY)
 const bot = new TelegramBot(process.env.BOT_API_KEY, { polling: true });
-dotenv.config();
-
 
 let fl = 0
 
@@ -32,27 +30,27 @@ bot.on('message', async msg => {
   }
 })
 
-bot.onText(/\/movie (.+)/, (msg, match) => {
-  let movie = match[1];
-  let chatId = msg.chat.id;
-  request(`http://www.omdbapi.com/?apiKey=${process.env.OMD_API_KEY}=${movie}`, (error, response, body) => {
-    if (!error && response.statusCode == 200) {
-
-      // bot.sendMessage(chatId, '_Looking for _' + movie + '...', { parse_mode: 'Markdown' })
-      //   .then((msg) => {
-      //     let res = JSON.parse(body);
-      //     bot.sendPhoto(chatId, res.Poster, { caption: 'Result: \nTitle: ' + res.Title + '\nYear: ' + res.Year + '\nRated: ' + res.Rated + '\nReleased: ' + res.Released + '\nRuntime: ' + res.Runtime + '\nGenre: ' + res.Genre + '\nDirector: ' + res.Director + '\nPlot: ' + res.Plot })
-      //       .catch((err) => {
-      //         if (err) {
-      //           bot.sendMessage(chatId, 'Error in finding,Check the movie title');
-      //         }
-      //       })
-      //   })
-
-
-    }
-  })
-})
+// bot.onText(/\/movie (.+)/, (msg, match) => {
+//   let movie = match[1];
+//   let chatId = msg.chat.id;
+//   request(`http://www.omdbapi.com/?apiKey=${process.env.OMD_API_KEY}=${movie}`, (error, response, body) => {
+//     if (!error && response.statusCode == 200) {
+//
+//       // bot.sendMessage(chatId, '_Looking for _' + movie + '...', { parse_mode: 'Markdown' })
+//       //   .then((msg) => {
+//       //     let res = JSON.parse(body);
+//       //     bot.sendPhoto(chatId, res.Poster, { caption: 'Result: \nTitle: ' + res.Title + '\nYear: ' + res.Year + '\nRated: ' + res.Rated + '\nReleased: ' + res.Released + '\nRuntime: ' + res.Runtime + '\nGenre: ' + res.Genre + '\nDirector: ' + res.Director + '\nPlot: ' + res.Plot })
+//       //       .catch((err) => {
+//       //         if (err) {
+//       //           bot.sendMessage(chatId, 'Error in finding,Check the movie title');
+//       //         }
+//       //       })
+//       //   })
+//
+//
+//     }
+//   })
+// })
 
 // bot.onText(/\/about (.+)/, (msg, match) => {
 //   if (match[1]) {
