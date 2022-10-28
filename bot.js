@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
 console.log(`Bot started in the ${process.env.NODE_ENV} mode`);
 
 bot.on('message', async (msg) => {
-  commands = ['/start', '/help'];
+  commands = ['/start', '/link'];
   const {text, chat: {id}} = msg
 
  if (text === '/start') {
@@ -44,6 +44,35 @@ bot.on('message', async (msg) => {
 
     await bot.sendMessage(id, html, {parse_mode: 'HTML'})
   }
+});
+
+bot.onText(/link/, (msg) => {
+
+  var chat_id = 'https://t.me/+q8tzqV5TCmw4NTA6' //msg.chat.id;
+
+
+  var date = (new Date(2022, 10, 28)).getTime(); // Timestamp date
+
+  // Options
+  var ops = {
+    expire_date: Date.now + 3600000, //date,
+    member_limit: 1
+  }
+
+  bot.createChatInviteLink(chat_id, ops).then((data) => {
+    console.log(data);
+
+    bot.editChatInviteLink(chat_id, data.invite_link, { member_limit: 3 }).then(data2 => {
+      console.log(data2);
+
+      bot.revokeChatInviteLink(chat_id, data2.invite_link).then(data3 => {
+        console.log(data3);
+      });
+    });
+
+
+  });
+
 });
 
 module.exports = bot;
