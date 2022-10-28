@@ -43,8 +43,6 @@ bot.on('message', async (msg) => {
         <a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>`
 
     await bot.sendMessage(id, html, {parse_mode: 'HTML'})
-   let test = bot.createChatInviteLink('https://t.me/+q8tzqV5TCmw4NTA6', Date.now()+ 3600000)
-    console.log('@@@@@ ', test)
   }
 });
 
