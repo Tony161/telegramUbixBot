@@ -59,17 +59,17 @@ bot.on('message', async (msg) => {
 
   }
 
-  if (msg.text !== '/start') {
-    fl = 1
-   }
-
-  if (fl) {
-    fl = 0
-  const html = `<strong>Thank your for the interest ${msg.from.first_name}, we'll contact you soon! Feel free to ask any question in our telegram channel:</strong>
-        <a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>`
-
-    await bot.sendMessage(id, html, {parse_mode: 'HTML'})
-  }
+  // if (msg.text !== '/start') {
+  //   fl = 1
+  //  }
+  //
+  // if (fl) {
+  //   fl = 0
+  // const html = `<strong>Thank your for the interest ${msg.from.first_name}, we'll contact you soon! Feel free to ask any question in our telegram channel:</strong>
+  //       <a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>`
+  //
+  //   await bot.sendMessage(id, html, {parse_mode: 'HTML'})
+  // }
 
 
 
@@ -88,7 +88,7 @@ bot.onText(/link/, (msg) => {
     member_limit: 1
   }
 
-  bot.createChatInviteLink(chat_id).then((data) => {
+  bot.createChatInviteLink(chat_id, ops).then((data) => {
     console.log(data);
 
     // bot.editChatInviteLink(chat_id, data.invite_link, { member_limit: 3 }).then(data2 => {
