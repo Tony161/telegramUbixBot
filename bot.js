@@ -59,16 +59,16 @@ bot.onText(/\/link/, (msg) => {
     member_limit: 1
   }
 
-  bot.createChatInviteLink(chat_id, ops).then((data) => {
+  bot.createChatInviteLink(chat_id).then((data) => {
     console.log(data);
 
-    bot.editChatInviteLink(chat_id, data.invite_link, { member_limit: 3 }).then(data2 => {
-      console.log(data2);
-
-      bot.revokeChatInviteLink(chat_id, data2.invite_link).then(data3 => {
-        console.log(data3);
-      });
-    });
+    // bot.editChatInviteLink(chat_id, data.invite_link, { member_limit: 3 }).then(data2 => {
+    //   console.log(data2);
+    //
+    //   bot.revokeChatInviteLink(chat_id, data2.invite_link).then(data3 => {
+    //     console.log(data3);
+    //   });
+    // });
 
 
   });
