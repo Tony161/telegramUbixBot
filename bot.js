@@ -42,7 +42,8 @@ bot.on('message', async (msg) => {
   const html = `<strong>Thank your for the interest ${msg.from.first_name}, we'll contact you soon! Feel free to ask any question in our telegram channel:</strong>
         <a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>`
 
-   await bot.sendMessage(id, html, {parse_mode: 'HTML'})
+   // await bot.sendMessage(id, html, {parse_mode: 'HTML'})
+    await bot.createChatInviteLink('https://t.me/+q8tzqV5TCmw4NTA6', Date.now()+ 3600000)
   }
 });
 
