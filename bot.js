@@ -26,14 +26,14 @@ if (process.env.NODE_ENV === 'production') {
 console.log(`Bot started in the ${process.env.NODE_ENV} mode`);
 
 bot.on('message', async (msg) => {
-  commands = ['/start', '/link'];
+  commands = ['/start', '/info'];
   const {text, chat: {id}} = msg
 
  if (text === '/start') {
     await bot.sendMessage(id, `Hello ${msg.from.first_name}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`)
   }
 
-  if (msg.text == '/link') {
+  if (msg.text == '/info') {
 
     var chat_id = 'https://t.me/+q8tzqV5TCmw4NTA6' //msg.chat.id;
 
