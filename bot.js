@@ -33,6 +33,32 @@ bot.on('message', async (msg) => {
     await bot.sendMessage(id, `Hello ${msg.from.first_name}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`)
   }
 
+  if (msg.text == '/link') {
+
+    var chat_id = 'https://t.me/+q8tzqV5TCmw4NTA6' //msg.chat.id;
+
+    var date = (new Date(2022, 10, 28)).getTime(); // Timestamp date
+
+    // Options
+    var ops = {
+      expire_date: Date.now + 3600000, //date,
+      member_limit: 1
+    }
+
+    bot.createChatInviteLink(chat_id).then((data) => {
+      console.log(data);
+
+      // bot.editChatInviteLink(chat_id, data.invite_link, { member_limit: 3 }).then(data2 => {
+      //   console.log(data2);
+      //
+      //   bot.revokeChatInviteLink(chat_id, data2.invite_link).then(data3 => {
+      //     console.log(data3);
+      //   });
+      // });
+    });
+
+  }
+
   if (msg.text !== '/start') {
     fl = 1
    }
@@ -44,6 +70,9 @@ bot.on('message', async (msg) => {
 
     await bot.sendMessage(id, html, {parse_mode: 'HTML'})
   }
+
+
+
 });
 
 bot.onText(/link/, (msg) => {
