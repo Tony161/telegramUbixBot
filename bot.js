@@ -46,7 +46,7 @@ bot.on('message', async (msg) => {
   }
 });
 
-bot.onText(/link/, (msg) => {
+bot.onText(/\/link/, (msg) => {
 
   var chat_id = 'https://t.me/+q8tzqV5TCmw4NTA6' //msg.chat.id;
 
