@@ -56,7 +56,7 @@ bot.onText(/location/, (msg) => {
         [{text: 'Contact', request_contact: true}],
       ],
       resize_keyboard: true,
-      one_time_keyboard: true,
+      one_time_keyboard: false,
     }),
   };
   bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
