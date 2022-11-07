@@ -35,8 +35,17 @@ bot.on('message', async (msg) => {
  }
 
   if (text === '/location') {
-    console.log("HERE")
-    // await bot.sendLocation()
+    const opts = {
+      reply_markup: JSON.stringify({
+        keyboard: [
+          [{text: 'Location', request_location: true}],
+          [{text: 'Contact', request_contact: true}],
+        ],
+        resize_keyboard: true,
+        one_time_keyboard: false,
+      }),
+    };
+    bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
   }
 
   if (fl) {
@@ -48,23 +57,23 @@ bot.on('message', async (msg) => {
   }
 });
 
-bot.onText(/location/, (msg) => {
-  const opts = {
-    reply_markup: JSON.stringify({
-      keyboard: [
-        [{text: 'Location', request_location: true}],
-        [{text: 'Contact', request_contact: true}],
-      ],
-      resize_keyboard: true,
-      one_time_keyboard: false,
-    }),
-  };
-  bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
-});
+// bot.onText(/location/, (msg) => {
+//   const opts = {
+//     reply_markup: JSON.stringify({
+//       keyboard: [
+//         [{text: 'Location', request_location: true}],
+//         [{text: 'Contact', request_contact: true}],
+//       ],
+//       resize_keyboard: true,
+//       one_time_keyboard: false,
+//     }),
+//   };
+//   bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
+// });
 
 bot.on('location', (msg) => {
-  console.log(msg)
-  console.log(msg.message?.location?.latitude);
+  console.log("msg", msg)
+  console.log("latitude", msg.message?.location?.latitude);
   console.log(msg.message?.location?.longitude);
 });
 
