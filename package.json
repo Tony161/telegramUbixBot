@@ -6,13 +6,11 @@
   "nodemonConfig": {
   "delay": 2500
 },
-  "type": "module",
   "engines": {
     "node": "18.x",
     "npm": "8.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "start": "node index.js",
     "heroku-postbuild": "npm install"
