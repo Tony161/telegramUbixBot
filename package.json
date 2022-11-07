@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "UBIX Network Bot",
   "main": "index.js",
+  "nodemonConfig": {
+  "delay": 2500
+},
+  "type": "module",
   "engines": {
     "node": "18.x",
     "npm": "8.x"
