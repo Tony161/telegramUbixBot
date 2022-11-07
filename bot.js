@@ -64,8 +64,8 @@ bot.onText(/location/, (msg) => {
 
 bot.on('location', (msg) => {
   console.log(msg)
-  console.log(msg.message.location.latitude);
-  console.log(msg.message.location.longitude);
+  console.log(msg.message?.location?.latitude);
+  console.log(msg.message?.location?.longitude);
 });
 
 module.exports = bot;
