@@ -35,7 +35,8 @@ bot.on('message', async (msg) => {
  }
 
   if (text === '/location') {
-    await bot.sendLocation()
+    console.log("HERE")
+    // await bot.sendLocation()
   }
 
   if (fl) {
@@ -48,6 +49,7 @@ bot.on('message', async (msg) => {
 });
 
 bot.on('location', (msg) => {
+  console.log(msg)
   console.log(msg.message.location.latitude);
   console.log(msg.message.location.longitude);
 });
