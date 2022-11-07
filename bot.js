@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
 console.log(`Bot started in the ${process.env.NODE_ENV} mode`);
 
 bot.on('message', async (msg) => {
-  commands = ['/start'];
+  commands = ['/start', '/location'];
   const {text, chat: {id}, from:{first_name, username }} = msg
 
  if (text === '/start') {
@@ -34,6 +34,10 @@ bot.on('message', async (msg) => {
    fl = 1
  }
 
+  if (text === '/location') {
+    await bot.sendLocation()
+  }
+
   if (fl) {
     fl = 0
   const html = `<strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel:</strong>
@@ -41,6 +45,11 @@ bot.on('message', async (msg) => {
 
     await bot.sendMessage(id, html, {parse_mode: 'HTML'})
   }
+});
+
+bot.on('location', (msg) => {
+  console.log(msg.message.location.latitude);
+  console.log(msg.message.location.longitude);
 });
 
 module.exports = bot;
