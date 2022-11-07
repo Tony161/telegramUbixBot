@@ -39,7 +39,7 @@ bot.on('message', async (msg) => {
   if (text === '/location') {
     const opts = {
       reply_markup: JSON.stringify({
-        inline_keyboard: [
+        keyboard: [
           [{text: 'Location', request_location: true}],
           [{text: 'Contact', request_contact: true}],
         ],
