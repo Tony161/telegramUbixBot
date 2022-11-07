@@ -30,14 +30,16 @@ bot.on('message', async (msg) => {
 
  if (text === '/start') {
     await bot.sendMessage(id, `Hello ${username}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`)
-  } else {
+  }
+
+  if (text !== '/start' && text !== '/location') {
    fl = 1
  }
 
   if (text === '/location') {
     const opts = {
       reply_markup: JSON.stringify({
-        keyboard: [
+        inline_keyboard: [
           [{text: 'Location', request_location: true}],
           [{text: 'Contact', request_contact: true}],
         ],
