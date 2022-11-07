@@ -1,28 +1,24 @@
-import TelegramAPi from 'node-telegram-bot-api'
-import config from 'config'
+const dotenv = require('dotenv')
+ dotenv.config();
+const bot= require('./bot.js')
+const express= require('express');
+const cors = require('cors')
 
-const token = config.get('token')
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const bot = new TelegramAPi(token, {polling: true})
+app.use(express.json())
+app.use(cors())
 
-let fl = 0
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Hello from the UBIX Bot API.' });
+});
+// TELEGRAM WEBHOOK - https://core.telegram.org/bots/api#setwebhook
+app.post(`/${process.env.TELEGRAM_TOKEN}`, (req, res) => {
+  bot.processUpdate(req.body);
+  res.status(200).json({ message: 'ok' });
+});
 
-bot.on('message', async msg => {
-  const {text, chat: {id}} = msg
-
-  if (text === '/start') {
-    await bot.sendMessage(id, `Hello ${msg.from.first_name}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`)
-  }
-
-  if (msg.text !== '/start') {
-    fl = 1
-  }
-
-  if (fl) {
-    fl = 0
-    const html = `<strong>Thank your for the interest ${msg.from.first_name}, we'll contact you soon! Feel free to ask any question in our telegram channel:</strong>
-        <a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>`
-
-    await bot.sendMessage(id, html, {parse_mode: 'HTML'})
-  }
-})
+app.listen(PORT, function () {
+  console.log(`Server is running at port ${PORT}`);
+});

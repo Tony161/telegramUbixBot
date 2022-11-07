@@ -4,7 +4,6 @@
   "description": "UBIX Network Bot",
   "main": "index.js",
   "nodemonConfig": {
-  "ignore": ["db/*", "client"],
   "delay": 2500
 },
   "type": "module",
@@ -21,8 +20,12 @@
   "author": "DNO Team",
   "license": "ISC",
   "dependencies": {
-    "config": "^3.3.8",
+    "axios": "^1.1.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "node-telegram-bot-api": "^0.59.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "request": "^2.88.2"
   }
 }
