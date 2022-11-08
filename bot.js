@@ -96,7 +96,7 @@ bot.on('location', async (msg) => {
   await bot.InputLocationMessageContent(msg.chat.id, "Removing keyboard")
 
   const {latitude, longitude } = msg.location
-  await bot.InlineQueryResultLocation("location",msg.chat.id,latitude, longitude,"test", ).then(result=> console.log(result))
+  await bot.sendLocation(msg.chat.id, latitude, longitude, {proximity_alert_radius: 1000} )
 
   // horizontal_accuracy	Float number	Optional. The radius of uncertainty for the location, measured in meters; 0-1500
   // live_period	Integer	Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
