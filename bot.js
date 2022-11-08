@@ -56,7 +56,7 @@ bot.on('message', async (msg) => {
     const opts = {
       reply_markup: JSON.stringify({
         keyboard: [
-          [{text: 'Location', request_location: true}],
+          [{text: 'Location', request_location: true}],["Cancel"],
         ],
         resize_keyboard: true,
         one_time_keyboard: true,
