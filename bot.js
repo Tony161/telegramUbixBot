@@ -79,7 +79,13 @@ bot.on('message', async (msg) => {
 
 bot.on('location', (msg) => {
   console.log("msg", msg)
-  googleMapsClient()
+  googleMapsClient.geocode({
+    address: '1600 Amphitheatre Parkway, Mountain View, CA'
+  }, function(err, response) {
+    if (!err) {
+      console.log(response.json.results);
+    }
+  });
   console.log("latitude", msg.message?.location?.latitude);
   console.log(msg.message?.location?.longitude);
 });
