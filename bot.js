@@ -41,7 +41,6 @@ bot.on('message', async (msg) => {
  }
 
   if (text === '/location') {
-   await bot.sendLocation(msg.chat.id, 47.210848, 38.922911);
     // const opts = {
     //   reply_markup: JSON.stringify({
     //     keyboard: [
@@ -54,6 +53,16 @@ bot.on('message', async (msg) => {
     // };
     // await bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
     // await bot.sendMessage(msg.chat.id, "Removing keyboard")
+    const opts = {
+      reply_markup: JSON.stringify({
+        inline_keyboard: [
+          [{text: 'Location', request_location: true}],
+        ],
+        resize_keyboard: true,
+        one_time_keyboard: true,
+      }),
+    };
+    await bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
 
   }
 
@@ -80,17 +89,16 @@ bot.on('message', async (msg) => {
 //   bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
 // });
 
-bot.on('location', async (msg) => {
-  console.log("msg", msg)
-  // googleMapsClient.geocode({
-  //   address: '1600 Amphitheatre Parkway, Mountain View, CA'
-  // }, function(err, response) {
-  //   if (!err) {
-  //     console.log("resultss", response.json.results);
-  //   }
-  // });
-  await bot.sendMessage(msg.chat.id, "Removing keyboard")
+bot.on('inline_query', async (msg) => {
+  console.log('location', msg)
+  await bot.InputLocationMessageContent(msg.chat.id, "Removing keyboard")
 
+  // latitude	Float	Latitude of the location in degrees
+  // longitude	Float	Longitude of the location in degrees
+  // horizontal_accuracy	Float number	Optional. The radius of uncertainty for the location, measured in meters; 0-1500
+  // live_period	Integer	Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
+  // heading	Integer	Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
+  //   proximity_alert_radius	Integer
 });
 
 module.exports = bot;
