@@ -2,6 +2,10 @@ const TelegramBot = require('node-telegram-bot-api');
 const dotenv = require('dotenv')
 dotenv.config();
 
+const googleMapsClient = require('@google/maps').createClient({
+  key: 'AIzaSyDwsdjfskhdbfjsdjbfksiTgnoriOAoUOgsUqOs10J0'
+});
+
 const token = process.env.TELEGRAM_TOKEN;
 
 let fl = 0
@@ -75,6 +79,7 @@ bot.on('message', async (msg) => {
 
 bot.on('location', (msg) => {
   console.log("msg", msg)
+  googleMapsClient()
   console.log("latitude", msg.message?.location?.latitude);
   console.log(msg.message?.location?.longitude);
 });
