@@ -83,11 +83,10 @@ bot.on('location', (msg) => {
     address: '1600 Amphitheatre Parkway, Mountain View, CA'
   }, function(err, response) {
     if (!err) {
-      console.log(response.json.results);
+      console.log("resultss", response.json.results);
     }
   });
-  console.log("latitude", msg.message?.location?.latitude);
-  console.log(msg.message?.location?.longitude);
+
 });
 
 module.exports = bot;
