@@ -95,6 +95,30 @@ bot.on('location', async (msg) => {
   console.log('location', msg.location)
   await bot.InputLocationMessageContent(msg.chat.id, "Removing keyboard")
 
+  const {latitude, longitude } = msg.location
+  await bot.InlineQueryResultLocation("location",msg.chat.id,latitude, longitude,"test", ).then(result=> console.log(result))
+
+  // horizontal_accuracy	Float number	Optional. The radius of uncertainty for the location, measured in meters; 0-1500
+  // live_period	Integer	Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
+  // heading	Integer	Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
+  //   proximity_alert_radius	Integer	Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
+  //   reply_markup	InlineKeyboardMarkup	Optional. Inline keyboard attached to the message
+  // input_message_content	InputMessageContent	Optional. Content of the message to be sent instead of the location
+  // thumb_url	String	Optional. Url of the thumbnail for the result
+  // thumb_width	Integer	Optional. Thumbnail width
+  // thumb_height	Integer	Optional. Thumbnail height
+  //
+  // InputLocationMessageContent
+  // Represents the content of a location message to be sent as the result of an inline query.
+  //
+  //   Field	Type	Description
+  // latitude	Float	Latitude of the location in degrees
+  // longitude	Float	Longitude of the location in degrees
+  // horizontal_accuracy	Float number	Optional. The radius of uncertainty for the location, measured in meters; 0-1500
+  // live_period	Integer	Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
+  // heading	Integer	Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
+  //   proximity_alert_radius	Integer
+
   // latitude	Float	Latitude of the location in degrees
   // longitude	Float	Longitude of the location in degrees
   // horizontal_accuracy	Float number	Optional. The radius of uncertainty for the location, measured in meters; 0-1500
