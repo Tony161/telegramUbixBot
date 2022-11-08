@@ -89,8 +89,10 @@ bot.on('message', async (msg) => {
 //   bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
 // });
 
-bot.on('inline_query', async (msg) => {
-  console.log('location', msg)
+// bot.once( "location"
+
+bot.on('location', async (msg) => {
+  console.log('location', msg.location)
   await bot.InputLocationMessageContent(msg.chat.id, "Removing keyboard")
 
   // latitude	Float	Latitude of the location in degrees
