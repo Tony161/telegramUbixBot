@@ -41,17 +41,20 @@ bot.on('message', async (msg) => {
  }
 
   if (text === '/location') {
-    const opts = {
-      reply_markup: JSON.stringify({
-        keyboard: [
-          [{text: 'Location', request_location: true}],
-          [{text: 'Contact', request_contact: true}],
-        ],
-        resize_keyboard: true,
-        one_time_keyboard: false,
-      }),
-    };
-    await bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
+   await bot.sendLocation(msg.chat.id, 47.210848, 38.922911);
+    // const opts = {
+    //   reply_markup: JSON.stringify({
+    //     keyboard: [
+    //       [{text: 'Location', request_location: true}],
+    //       [{text: 'Contact', request_contact: true}],
+    //     ],
+    //     resize_keyboard: true,
+    //     one_time_keyboard: true,
+    //   }),
+    // };
+    // await bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
+    // await bot.sendMessage(msg.chat.id, "Removing keyboard")
+
   }
 
   if (fl) {
