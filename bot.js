@@ -51,7 +51,7 @@ bot.on('message', async (msg) => {
         one_time_keyboard: false,
       }),
     };
-    bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
+    await bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
   }
 
   if (fl) {
