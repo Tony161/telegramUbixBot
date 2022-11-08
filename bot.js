@@ -80,15 +80,16 @@ bot.on('message', async (msg) => {
 //   bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
 // });
 
-bot.on('location', (msg) => {
+bot.on('location', async (msg) => {
   console.log("msg", msg)
-  googleMapsClient.geocode({
-    address: '1600 Amphitheatre Parkway, Mountain View, CA'
-  }, function(err, response) {
-    if (!err) {
-      console.log("resultss", response.json.results);
-    }
-  });
+  // googleMapsClient.geocode({
+  //   address: '1600 Amphitheatre Parkway, Mountain View, CA'
+  // }, function(err, response) {
+  //   if (!err) {
+  //     console.log("resultss", response.json.results);
+  //   }
+  // });
+  await bot.sendMessage(msg.chat.id, "Removing keyboard")
 
 });
 
