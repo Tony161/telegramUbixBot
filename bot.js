@@ -55,7 +55,7 @@ bot.on('message', async (msg) => {
     // await bot.sendMessage(msg.chat.id, "Removing keyboard")
     const opts = {
       reply_markup: JSON.stringify({
-        inline_keyboard: [
+        keyboard: [
           [{text: 'Location', request_location: true}],
         ],
         resize_keyboard: true,
