@@ -93,7 +93,6 @@ bot.on('message', async (msg) => {
 
 bot.on('location', async (msg) => {
   console.log('location', msg.location)
-  await bot.InputLocationMessageContent(msg.chat.id, "Removing keyboard")
 
   const {latitude, longitude } = msg.location
   await bot.sendLocation(msg.chat.id, latitude, longitude, {proximity_alert_radius: 1000} )
