@@ -52,7 +52,7 @@ bot.on('message', async (msg) => {
 
   if (fl) {
     fl = 0
-  const html = `<pre><strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel:</strong><a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a></pre>`
+  const html = `<strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel: </strong><a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>`
 
     await bot.sendMessage(id, html, {parse_mode: 'HTML'})
   }
