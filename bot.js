@@ -30,59 +30,13 @@ bot.on('message', async (msg) => {
 
  if (text === '/start') {
     await bot.sendMessage(id, `Hello ${username}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`)
-  }
-
-  if (text !== '/start') {
-   fl = 1
+  } else {
+     const html = `<strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel: </strong>`
+     // <a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>
+     await bot.sendMessage(id, html, {parse_mode: 'HTML'})
+     await bot.forwardMessage("@testBotCLXI",id,  message_id) //@testBotCLXI
  }
 
-  // if (text === '/location') {
-  //   const opts = {
-  //     reply_markup: JSON.stringify({
-  //       keyboard: [
-  //         [{text: 'Location', request_location: true}],["Cancel"],
-  //       ],
-  //       resize_keyboard: true,
-  //       one_time_keyboard: true,
-  //     }),
-  //   };
-  //   await bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
-  //
-  // }
-
-  if (fl) {
-    fl = 0
-    console.log('@@@@@ masg',msg)
-  const html = `<strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel: </strong>`
-    // <a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>
-    await bot.sendMessage(id, html, {parse_mode: 'HTML'})
-    await bot.forwardMessage("@testBotCLXI",id,  message_id) //@testBotCLXI
-
-  }
 });
-
-// bot.onText(/location/, (msg) => {
-//   const opts = {
-//     reply_markup: JSON.stringify({
-//       keyboard: [
-//         [{text: 'Location', request_location: true}],
-//         [{text: 'Contact', request_contact: true}],
-//       ],
-//       resize_keyboard: true,
-//       one_time_keyboard: false,
-//     }),
-//   };
-//   bot.sendMessage(msg.chat.id, 'Contact and Location request', opts);
-// });
-
-// bot.once( "location"
-
-// bot.on('location', async (msg) => {
-//   console.log('location', msg.location)
-//
-//   const {latitude, longitude } = msg.location
-//   await bot.sendLocation(msg.chat.id, latitude, longitude, {proximity_alert_radius: 100000, horizontal_accuracy: 1000} )
-//
-// });
 
 module.exports = bot;
