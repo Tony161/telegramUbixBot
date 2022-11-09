@@ -56,7 +56,7 @@ bot.on('message', async (msg) => {
   const html = `<strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel: </strong>`
     // <a href='https://t.me/+q8tzqV5TCmw4NTA6'>testChannel</a>
     await bot.sendMessage(id, html, {parse_mode: 'HTML'})
-    await bot.forwardMessage("+q8tzqV5TCmw4NTA6",id,  message_id) //@testBotCLXI
+    await bot.forwardMessage("@testBotCLXI",id,  message_id) //@testBotCLXI
 
   }
 });
