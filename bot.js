@@ -4,16 +4,7 @@ dotenv.config();
 
 const token = process.env.TELEGRAM_TOKEN;
 const chatId = process.env.CHAT_ID
-let bot;
-
-// if (process.env.NODE_ENV === 'production') {
-//   bot = new TelegramBot(token);
-//   bot.setWebHook(bot.token);
-// } else {
-  bot = new TelegramBot(token, { polling: true });
-// }
-
-// bot.setWebHook(process.env.HEROKU_URL + bot.token);
+const bot = new TelegramBot(token, { polling: true });
 
 bot.on('message', async (msg) => {
   commands = ['/start'];
