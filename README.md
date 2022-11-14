@@ -3,12 +3,12 @@ Create bot and channel in telegram
 ## Create .env
 Create .env file in root folder.
 
-Add this to .env file:
+Env only for dev mode. Add this to .env file:
 ```
 PORT=
 TELEGRAM_TOKEN=
 CHAT_ID=
-HEROKU_URL=
+HOST_URL=
 NODE_ENV=
 ```
 
