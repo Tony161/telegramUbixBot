@@ -11,7 +11,7 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Hello from the UBIX Bot API.' });
 });
-// TELEGRAM WEBHOOK - https://core.telegram.org/bots/api#setwebhook
+
 app.post(`/${process.env.TELEGRAM_TOKEN}`, (req, res) => {
   bot.processUpdate(req.body);
   res.status(200).json({ message: 'ok' });
