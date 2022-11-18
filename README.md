@@ -14,6 +14,7 @@ TELEGRAM_TOKEN=
 CHAT_ID=
 HOST_URL= // only for production mode
 NODE_ENV=developent // only for developent mode
+POLLING_TIME= //set in ms for testing connection with bot
 ```
 
 ### Install

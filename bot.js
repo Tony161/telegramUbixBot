@@ -1,6 +1,8 @@
 const TelegramBot = require('node-telegram-bot-api');
 const dotenv = require('dotenv')
 dotenv.config();
+const Tick = require('tick-tock')
+  , tock = new Tick();
 
 const token = process.env.TELEGRAM_TOKEN;
 const chatId = process.env.CHAT_ID
@@ -25,5 +27,15 @@ bot.on('message', async (msg) => {
      await bot.forwardMessage(chatId ,id,  message_id)
  }
 });
+
+tock.setInterval('poolBot', () =>bot.sendChatAction(chatId, "typing" ).then(res=>  bot.sendMessage(chatId, "WorK it, Maxim", )),process.env.POLLING_TIME)
+
+bot.on('polling_error', (error) => {
+  tock.clear();
+});
+bot.on('webhook_error', (error) => {
+  tock.clear();
+});
+
 
 module.exports = bot;
