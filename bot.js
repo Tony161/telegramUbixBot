@@ -31,10 +31,10 @@ bot.on('message', async (msg) => {
 tock.setInterval('poolBot', () =>bot.sendChatAction(chatId, "typing" ).then(res=>  bot.sendMessage(chatId, "WorK it, Maxim", )),process.env.POLLING_TIME)
 
 bot.on('polling_error', (error) => {
-  tock.clear();
+  // tock.clear();
 });
 bot.on('webhook_error', (error) => {
-  tock.clear();
+  // tock.clear();
 });
 
 module.exports = bot;
