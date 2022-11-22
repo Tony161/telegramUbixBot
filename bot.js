@@ -3,12 +3,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 const Tick = require('tick-tock'),
     tock = new Tick();
-const checkPingInterval = require('./utils/checkPingInterval');
+const createHeartBeatMessage = require('./utils/createHeartBeatMessage');
 
 const token = process.env.TELEGRAM_TOKEN;
 const chatId = process.env.CHAT_ID;
 const heartbeat = `${process.env.PING_INTERVAL_IN_MIN} minutes`;
-const heartbeatMessage = checkPingInterval();
+const heartbeatMessage = createHeartBeatMessage();
 let bot;
 
 if (process.env.NODE_ENV === 'production') {
