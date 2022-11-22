@@ -7,7 +7,7 @@ const checkPingInterval = require('./utils/checkPingInterval');
 
 const token = process.env.TELEGRAM_TOKEN;
 const chatId = process.env.CHAT_ID;
-const pingInterval = `${process.env.PING_INTERVAL_IN_MIN} minutes`;
+const heartbeat = `${process.env.PING_INTERVAL_IN_MIN} minutes`;
 const heartbeatMessage = checkPingInterval();
 let bot;
 
@@ -41,7 +41,7 @@ bot.on('message', msg => {
 tock.setInterval(
     'poolBot',
     () => bot.sendChatAction(chatId, 'typing').then(() => bot.sendMessage(chatId, heartbeatMessage)),
-    pingInterval
+    heartbeat
 );
 
 bot.on('polling_error', () => {
