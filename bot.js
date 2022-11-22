@@ -3,12 +3,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 const Tick = require('tick-tock'),
     tock = new Tick();
-const checkPoolInterval = require("./utils/checkPoolInterval");
+const checkPingInterval = require('./utils/checkPingInterval');
 
 const token = process.env.TELEGRAM_TOKEN;
 const chatId = process.env.CHAT_ID;
-const interval = `${process.env.POLLING_TIME} minutes`;
-const poolMessage = checkPoolInterval();
+const pingInterval = `${process.env.PING_INTERVAL_IN_MIN} minutes`;
+const heartbeatMessage = checkPingInterval();
 let bot;
 
 if (process.env.NODE_ENV === 'production') {
@@ -40,8 +40,8 @@ bot.on('message', msg => {
 
 tock.setInterval(
     'poolBot',
-    () => bot.sendChatAction(chatId, 'typing').then(() => bot.sendMessage(chatId, poolMessage)),
-    interval
+    () => bot.sendChatAction(chatId, 'typing').then(() => bot.sendMessage(chatId, heartbeatMessage)),
+    pingInterval
 );
 
 bot.on('polling_error', () => {

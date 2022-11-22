@@ -14,7 +14,7 @@ TELEGRAM_TOKEN=
 CHAT_ID=
 HOST_URL= // only for production mode
 NODE_ENV=developent // only for developent mode
-POLLING_TIME= // set ping interval in min
+PING_INTERVAL_IN_MIN= // set ping interval in min
 ```
 
 ### Install
