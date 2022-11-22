@@ -6,6 +6,7 @@ const Tick = require('tick-tock')
 
 const token = process.env.TELEGRAM_TOKEN;
 const chatId = process.env.CHAT_ID
+const interval = process.env.POLLING_TIME * 60000
 let bot;
 
 if (process.env.NODE_ENV === 'production') {
@@ -16,25 +17,29 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 bot.on('message', async (msg) => {
-  commands = ['/start'];
-  const {text,  message_id, chat: {id}, from:{username }} = msg
+  try {
+    commands = ['/start'];
+    const {text, message_id, chat: {id}, from: {username}} = msg
 
- if (text === '/start') {
-    await bot.sendMessage(id, `Hello ${username}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`)
-  } else {
-     const html = `<strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel: </strong>`
-     await bot.sendMessage(id, html, {parse_mode: 'HTML'})
-     await bot.forwardMessage(chatId ,id,  message_id)
- }
+    if (text === '/start') {
+      await bot.sendMessage(id, `Hello ${username}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`)
+    } else {
+      const html = `<strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel: </strong>`
+      await bot.sendMessage(id, html, {parse_mode: 'HTML'})
+      await bot.forwardMessage(chatId, id, message_id)
+    }
+  } catch {
+    tock.clear();
+  }
 });
 
-tock.setInterval('poolBot', () =>bot.sendChatAction(chatId, "typing" ).then(res=>  bot.sendMessage(chatId, "WorK it, Maxim", )),process.env.POLLING_TIME)
+tock.setInterval('poolBot', () =>bot.sendChatAction(chatId, "typing" ).then(()=>  bot.sendMessage(chatId, "WorK it, Maxim", )), interval)
 
-bot.on('polling_error', (error) => {
-  // tock.clear();
+bot.on('polling_error', () => {
+  tock.clear();
 });
-bot.on('webhook_error', (error) => {
-  // tock.clear();
+bot.on('webhook_error', () => {
+  tock.clear();
 });
 
 module.exports = bot;
