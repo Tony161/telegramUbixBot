@@ -6,7 +6,7 @@ const Tick = require('tick-tock')
 
 const token = process.env.TELEGRAM_TOKEN;
 const chatId = process.env.CHAT_ID
-const interval = process.env.POLLING_TIME * 60000
+const interval =`${process.env.POLLING_TIME} minutes`
 let bot;
 
 if (process.env.NODE_ENV === 'production') {
