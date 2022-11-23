@@ -27,7 +27,7 @@ const getHeartBeatMessage = interval => {
     const minutes = interval % 60;
 
     const hoursString = hours ? '' : hours > 1 ? `${hours} hours ` : `${hours} hour `;
-    const minutesString = minutes === 1 ? `${minutes} minute ` : `${minutes} minutes `;
+    const minutesString = minutes ? '' : minutes > 1 ? `${minutes} minutes` : `${minutes} minute`;
 
     return `Bot heartbeat, ones per: ${hoursString}${minutesString}`;
 };
