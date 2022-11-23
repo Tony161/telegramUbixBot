@@ -4,6 +4,10 @@ const tock = new Tick();
 
 let bot;
 
+const token = process.env.TELEGRAM_TOKEN;
+const chatId = process.env.CHAT_ID;
+const heartbeatInterval = +process.env.PING_INTERVAL_IN_MIN;
+
 if (process.env.NODE_ENV !== 'development') {
     bot = new TelegramBot(token);
     bot.setWebHook(process.env.HOST_URL + bot.token);
@@ -12,10 +16,6 @@ if (process.env.NODE_ENV !== 'development') {
     dotenv.config();
     bot = new TelegramBot(token, {polling: true});
 }
-
-const token = process.env.TELEGRAM_TOKEN;
-const chatId = process.env.CHAT_ID;
-const heartbeatInterval = +process.env.PING_INTERVAL_IN_MIN;
 
 const getWelcomeMessage = username =>
     `Hello ${username}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`;
