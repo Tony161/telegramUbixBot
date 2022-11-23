@@ -26,8 +26,15 @@ const getHeartBeatMessage = interval => {
     const hours = Math.floor(interval / 60);
     const minutes = interval % 60;
 
+    console.log('@@@@@ hours', hours)
+
+    console.log('@@@@@ minutes', minutes)
+
+
     const hoursString = hours ? '' : hours > 1 ? `${hours} hours ` : `${hours} hour `;
     const minutesString = minutes ? '' : minutes > 1 ? `${minutes} minutes` : `${minutes} minute`;
+
+    console.log('@@@@@ ',${hoursString}${minutesString})
 
     return `Bot heartbeat, ones per: ${hoursString}${minutesString}`;
 };
