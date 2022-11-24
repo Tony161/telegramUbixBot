@@ -19,9 +19,6 @@ const heartbeatInterval = +process.env.PING_INTERVAL_IN_MIN;
 const getWelcomeMessage = username =>
     `Hello ${username}, if you're interested in contributing for our project please send UIP task number, your GitHub account name and tell us a few words about your software development experience`;
 
-const getThanksMessage = username =>
-    `<strong>Thank your for the interest ${username}, we'll contact you soon! Feel free to ask any question in our telegram channel: </strong>`;
-
 const getHeartBeatMessage = interval => {
     const hours = Math.floor(interval / 60);
     const minutes = interval % 60;
@@ -44,9 +41,7 @@ bot.on('message', msg => {
     if (text === '/start') {
         bot.sendMessage(id, getWelcomeMessage(username));
     } else {
-        bot.sendMessage(id, getThanksMessage(username), {parse_mode: 'HTML'}).then(() =>
-            bot.forwardMessage(chatId, id, message_id)
-        );
+        bot.forwardMessage(chatId, id, message_id);
     }
 });
 
