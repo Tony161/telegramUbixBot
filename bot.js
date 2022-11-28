@@ -30,7 +30,7 @@ const getHeartBeatMessage = interval => {
         hours = hours % 24;
     }
 
-    const daysString = !days ? '' : days > 2 ? `${days} days ` : `${days} day `;
+    const daysString = !days ? '' : days > 1 ? `${days} days ` : `${days} day `;
     const hoursString = !hours ? '' : hours > 1 ? `${hours} hours ` : `${hours} hour `;
     const minutesString = !minutes ? '' : minutes > 1 ? `${minutes} minutes` : `${minutes} minute`;
 
