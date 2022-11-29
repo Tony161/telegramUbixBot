@@ -25,7 +25,7 @@ const getThanksMessage = username =>
 const getHeartBeatMessage = interval => {
     let days, hours = Math.floor(interval / 60);
     const minutes = interval % 60;
-    if (hours > 24) {
+    if (hours >= 24) {
         days = Math.floor(hours / 24);
         hours = hours % 24;
     }
