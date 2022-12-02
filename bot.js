@@ -23,7 +23,8 @@ const getThanksMessage = username =>
     `<strong>Thank your for the interest ${username}, we'll contact you soon!</strong>`;
 
 const getHeartBeatMessage = interval => {
-    let days, hours = Math.floor(interval / 60);
+    let days,
+        hours = Math.floor(interval / 60);
     const minutes = interval % 60;
     if (hours >= 24) {
         days = Math.floor(hours / 24);
@@ -36,7 +37,6 @@ const getHeartBeatMessage = interval => {
 
     return `Bot heartbeat, ones per: ${daysString}${hoursString}${minutesString}`;
 };
-
 
 bot.on('message', msg => {
     commands = ['/start'];
